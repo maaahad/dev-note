@@ -42,20 +42,5 @@ That gives the frontend a strongly typed contract while allowing the server to e
 The basic request flow looks like this:
 
 ```text
-Browser
-   |
-   v
-GraphQL
-   |
-   v
-Resolver
-   |
-   v
-Service
-   |
-   v
-Repository
-   |
-   v
-PostgreSQL
+Browser -> GraphQL -> Resolver -> Service -> Repository -> PostgreSQL
 ```

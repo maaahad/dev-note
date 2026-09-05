@@ -27,7 +27,7 @@ export default function BlogPage() {
               </time>
 
               <div>
-                <Link href={`/blog/${post.slug}`} className="blog-title">
+                <Link href={`/blogs/${post.slug}`} className="blog-title">
                   {post.title}
                 </Link>
 
