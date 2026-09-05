@@ -2,69 +2,100 @@ import Link from "next/link";
 
 export default function HomePage() {
   return (
-    <main className="site-shell">
-      <section className="hero">
-        <div className="terminal-prompt">
-          <span className="prompt-symbol">&gt;</span>
+    <div className="page">
+      <section className="home-hero">
+        <div className="command">
+          <span className="prompt">&gt;</span>
           <span>whoami</span>
         </div>
 
-        <h1>Muhammed Ahad</h1>
+        <h1 className="home-title">Muhammed Ahad</h1>
 
-        <p className="hero-description">
-          Software engineer building things with Rust, TypeScript, React and
-          GraphQL.
+        <p className="home-subtitle">
+          Software engineer building software with Rust, TypeScript, React,
+          GraphQL and PostgreSQL.
         </p>
 
-        <div className="terminal-output">
-          <div>
-            <span className="terminal-label">role</span>
+        <div className="home-meta">
+          <div className="home-meta-row">
+            <span className="meta-label">role</span>
+
             <span>software engineer</span>
           </div>
 
-          <div>
-            <span className="terminal-label">focus</span>
+          <div className="home-meta-row">
+            <span className="meta-label">focus</span>
+
             <span>full-stack development</span>
           </div>
 
-          <div>
-            <span className="terminal-label">stack</span>
-            <span>rust · react · next.js · graphql · postgres</span>
+          <div className="home-meta-row">
+            <span className="meta-label">currently</span>
+
+            <span>learning Rust backend engineering</span>
+          </div>
+
+          <div className="home-meta-row">
+            <span className="meta-label">stack</span>
+
+            <span>rust · axum · graphql · postgres · react · next.js</span>
           </div>
         </div>
 
-        <nav className="hero-links" aria-label="Main navigation">
-          <Link href="/projects">projects</Link>
-          <Link href="/blog">blog</Link>
-          <Link href="/about">about</Link>
-        </nav>
+        <div className="home-actions">
+          <Link href="/projects" className="home-action">
+            projects
+          </Link>
+
+          <Link href="/blog" className="home-action">
+            blog
+          </Link>
+
+          <Link href="/about" className="home-action">
+            about
+          </Link>
+        </div>
       </section>
 
-      <section className="terminal-window">
-        <div className="terminal-window-header">
+      <section className="terminal">
+        <div className="terminal-header">
           <span>~/dev-note</span>
 
           <span className="terminal-status">● online</span>
         </div>
 
-        <div className="terminal-window-body">
-          <p>
-            <span className="prompt-symbol">$</span> cat README.md
+        <div className="terminal-body">
+          <p className="terminal-line">
+            <span className="prompt">$</span> cat README.md
           </p>
 
-          <p className="terminal-muted">A personal engineering notebook.</p>
+          <p className="terminal-output">A personal engineering notebook.</p>
 
-          <p className="terminal-muted">
-            Notes, projects, experiments and things I learn while building
+          <p className="terminal-output">
+            Notes, projects, experiments and things learned while building
             software.
           </p>
 
-          <p>
-            <span className="prompt-symbol">$</span>{" "}
-            <span className="cursor">_</span>
+          <p className="terminal-output">Everything starts here.</p>
+
+          <p className="terminal-line">
+            <span className="prompt">$</span> <span className="cursor">_</span>
           </p>
         </div>
       </section>
-    </main>
+
+      <section className="section">
+        <div className="section-heading">
+          <h2 className="section-title">Recent writing</h2>
+
+          <span className="section-index">/blog</span>
+        </div>
+
+        <p className="terminal-output">
+          Technical notes about software engineering, Rust, GraphQL, frontend
+          architecture and things I'm building.
+        </p>
+      </section>
+    </div>
   );
 }

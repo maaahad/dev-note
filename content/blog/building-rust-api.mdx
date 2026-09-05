@@ -1,0 +1,61 @@
+---
+title: "Building a Rust GraphQL API"
+description: "Starting a production-oriented API with Axum, async-graphql and PostgreSQL."
+date: "2026-09-05"
+---
+
+# Building a Rust GraphQL API
+
+I've been moving deeper into backend engineering and decided to build my next API using Rust.
+
+The stack is intentionally small:
+
+- Rust
+- Axum
+- async-graphql
+- PostgreSQL
+- SQLx
+- Docker
+
+The goal isn't simply to make an API that works.
+
+The goal is to understand what a production-oriented Rust service should look like.
+
+## Why Rust?
+
+Rust gives me several things I care about when building backend systems:
+
+- strong compile-time guarantees
+- predictable performance
+- explicit error handling
+- excellent tooling
+- a powerful type system
+
+Coming from TypeScript, the biggest adjustment is thinking much more carefully about ownership, lifetimes and error boundaries.
+
+## Why GraphQL?
+
+The project uses GraphQL as the API boundary.
+
+That gives the frontend a strongly typed contract while allowing the server to evolve without creating a large collection of REST endpoints.
+
+The basic request flow looks like this:
+
+```text
+Browser
+   |
+   v
+GraphQL
+   |
+   v
+Resolver
+   |
+   v
+Service
+   |
+   v
+Repository
+   |
+   v
+PostgreSQL
+```
