@@ -217,22 +217,16 @@ button {
   color: var(--green);
 }
 
-.nav-index {
-  color: var(--mute-2);
-
-  font-size: 10px;
-}
-
 .theme-toggle {
-  width: 34px;
-  height: 34px;
+  width: 32px;
+  height: 32px;
 
   margin-left: 8px;
 
   display: grid;
   place-items: center;
 
-  border: 1px solid var(--line);
+  /* border: 1px solid var(--line); */
 
   background: var(--panel);
 
@@ -243,6 +237,10 @@ button {
   transition:
     border-color 120ms ease,
     background 120ms ease;
+}
+
+.theme-toggle > span {
+  scale: 2;
 }
 
 .theme-toggle:hover {
@@ -294,15 +292,15 @@ button {
 
   color: var(--fg-max);
 
-  font-size: clamp(2.8rem, 8vw, 6rem);
+  font-size: clamp(2rem, 6vw, 4rem);
 
-  font-weight: 500;
+  font-weight: 400;
 
   letter-spacing: -0.07em;
 
   line-height: 0.95;
 
-  text-shadow: 0 0 25px var(--green-glow);
+  /* text-shadow: 0 0 25px var(--green-glow); */
 }
 
 .home-subtitle {
@@ -393,9 +391,9 @@ button {
 
   background: var(--panel);
 
-  box-shadow:
-    0 25px 80px rgba(0, 0, 0, 0.12),
-    inset 0 1px 0 rgba(255, 255, 255, 0.025);
+  /* box-shadow: */
+  /*   0 25px 80px rgba(0, 0, 0, 0.12), */
+  /*   inset 0 1px 0 rgba(255, 255, 255, 0.025); */
 }
 
 .terminal-header {
@@ -692,10 +690,6 @@ button {
 
   .site-nav a {
     padding-inline: 6px;
-  }
-
-  .nav-index {
-    display: none;
   }
 
   .page {

@@ -1,20 +1,22 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { getPosts } from "@/lib/posts";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Blog",
 };
 
 export default function BlogPage() {
-  const posts = getPosts();
+  const posts = getPosts().filter((post) => !!post.content);
+  console.log(posts);
 
   return (
     <div className="page">
       <section className="section">
         <div className="section-heading">
-          <h1 className="section-title">Blog</h1>
+          <h1 className="section-title">Blogs</h1>
 
-          <span className="section-index">/blog</span>
+          <span className="section-index">/blogs</span>
         </div>
 
         <div className="blog-list">
@@ -25,7 +27,7 @@ export default function BlogPage() {
               </time>
 
               <div>
-                <Link href={`/blog/${post.slug}`} className="blog-title">
+                <Link href={`/blogs/${post.slug}`} className="blog-title">
                   {post.title}
                 </Link>
 
