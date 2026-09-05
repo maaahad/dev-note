@@ -9,7 +9,7 @@ export default function HomePage() {
           <span>whoami</span>
         </div>
 
-        <h1 className="home-title">Muhammed Ahad</h1>
+        <h1 className="home-title">muhammed ahad</h1>
 
         <p className="home-subtitle">
           Software engineer building software with Rust, TypeScript, React,
@@ -47,8 +47,8 @@ export default function HomePage() {
             projects
           </Link>
 
-          <Link href="/blog" className="home-action">
-            blog
+          <Link href="/blogs" className="home-action">
+            blogs
           </Link>
 
           <Link href="/about" className="home-action">
@@ -88,7 +88,7 @@ export default function HomePage() {
         <div className="section-heading">
           <h2 className="section-title">Recent writing</h2>
 
-          <span className="section-index">/blog</span>
+          <span className="section-index">/blogs</span>
         </div>
 
         <p className="terminal-output">

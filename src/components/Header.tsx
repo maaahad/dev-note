@@ -14,7 +14,7 @@ export function Header() {
         <nav className="site-nav" aria-label="Primary navigation">
           <Link href="/projects">[ projects ]</Link>
 
-          <Link href="/blog">[ blog ]</Link>
+          <Link href="/blogs">[ blogs ]</Link>
 
           <Link href="/about">[ about ]</Link>
 
