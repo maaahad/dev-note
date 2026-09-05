@@ -1,26 +1,332 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /*
+   * CLIAMP-inspired palette
+   */
+  --ink: #080a08;
+  --ink-2: #0b0d0a;
+
+  --panel: #111410;
+  --panel-2: #171b14;
+  --panel-3: #1e231a;
+
+  --line: #262c20;
+  --line-hi: #39422f;
+
+  --fg: #c3c7ba;
+  --fg-hi: #e9ece0;
+  --fg-max: #fbfdf5;
+
+  --mute: #6e7566;
+  --mute-2: #474d40;
+
+  --green: #37f5a0;
+  --green-hi: #8bffc6;
+
+  --amber: #ffb454;
+  --amber-hi: #ffd39a;
+
+  --cyan: #4fd6ff;
+
+  --red: #ff5d6c;
+  --pink: #ff66cc;
+  --purple: #c3a6ff;
+
+  /*
+   * Effects
+   */
+  --green-glow: rgba(55, 245, 160, 0.35);
+  --green-dim: rgba(55, 245, 160, 0.1);
+
+  --amber-glow: rgba(255, 180, 84, 0.32);
+  --amber-dim: rgba(255, 180, 84, 0.1);
+
+  /*
+   * Layout
+   */
+  --wrap: 1080px;
+
+  /*
+   * Typography
+   */
+  --mono:
+    "SF Mono", "JetBrains Mono", "Cascadia Code", "Fira Code", "IBM Plex Mono",
+    "Consolas", "Liberation Mono", monospace;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/*
+ * Base reset
+ */
+
+* {
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  background: var(--ink);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+
+  background:
+    radial-gradient(
+      circle at 50% -20%,
+      rgba(55, 245, 160, 0.035),
+      transparent 45%
+    ),
+    var(--ink);
+
+  color: var(--fg);
+
+  font-family: var(--mono);
+  font-size: 14px;
+  line-height: 1.7;
+
+  min-height: 100vh;
+
+  /*
+   * Subtle CRT-style texture
+   */
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.008) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.005) 1px, transparent 1px);
+
+  background-size: 4px 4px;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+::selection {
+  background: var(--green);
+  color: var(--ink);
+}
+
+/*
+ * Site shell
+ */
+
+.site-shell {
+  width: min(calc(100% - 32px), var(--wrap));
+
+  margin: 0 auto;
+  padding: 96px 0 64px;
+}
+
+/*
+ * Hero
+ */
+
+.hero {
+  max-width: 760px;
+}
+
+.terminal-prompt {
+  display: flex;
+  gap: 10px;
+
+  margin-bottom: 24px;
+
+  color: var(--mute);
+
+  font-size: 13px;
+  text-transform: lowercase;
+}
+
+.prompt-symbol {
+  color: var(--green);
+}
+
+.hero h1 {
+  margin: 0;
+
+  color: var(--fg-max);
+
+  font-size: clamp(2.4rem, 7vw, 5rem);
+
+  font-weight: 500;
+
+  letter-spacing: -0.06em;
+  line-height: 1;
+
+  text-shadow: 0 0 20px var(--green-glow);
+}
+
+.hero-description {
+  max-width: 680px;
+
+  margin: 28px 0 0;
+
+  color: var(--fg);
+
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+/*
+ * Terminal metadata
+ */
+
+.terminal-output {
+  display: grid;
+  gap: 8px;
+
+  margin-top: 36px;
+
+  padding: 20px;
+
+  border: 1px solid var(--line);
+
+  background: var(--panel);
+
+  box-shadow:
+    inset 0 1px 0 var(--bevel-hi),
+    0 12px 40px rgba(0, 0, 0, 0.25);
+}
+
+.terminal-output > div {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+
+  gap: 16px;
+}
+
+.terminal-label {
+  color: var(--green);
+}
+
+/*
+ * Navigation
+ */
+
+.hero-links {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 12px;
+
+  margin-top: 32px;
+}
+
+.hero-links a {
+  padding: 7px 12px;
+
+  border: 1px solid var(--line);
+
+  color: var(--mute);
+
+  transition:
+    color 120ms ease,
+    border-color 120ms ease,
+    background 120ms ease;
+}
+
+.hero-links a::before {
+  content: "./";
+  color: var(--green);
+}
+
+.hero-links a:hover {
+  border-color: var(--line-hi);
+
+  background: var(--green-dim);
+
+  color: var(--green-hi);
+}
+
+/*
+ * Terminal window
+ */
+
+.terminal-window {
+  margin-top: 96px;
+
+  border: 1px solid var(--line);
+
+  background: var(--panel);
+
+  box-shadow:
+    0 24px 80px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.02);
+}
+
+.terminal-window-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  min-height: 42px;
+
+  padding: 0 16px;
+
+  border-bottom: 1px solid var(--line);
+
+  background: var(--panel-2);
+
+  color: var(--mute);
+
+  font-size: 12px;
+}
+
+.terminal-status {
+  color: var(--green);
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.08em;
+}
+
+.terminal-window-body {
+  padding: 24px;
+
+  min-height: 240px;
+}
+
+.terminal-window-body p {
+  margin: 0 0 16px;
+}
+
+.terminal-muted {
+  color: var(--mute);
+}
+
+.cursor {
+  color: var(--green);
+
+  animation: blink 1s steps(2, start) infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+/*
+ * Mobile
+ */
+
+@media (max-width: 640px) {
+  .site-shell {
+    width: min(calc(100% - 24px), var(--wrap));
+
+    padding-top: 64px;
+  }
+
+  .hero h1 {
+    font-size: 2.8rem;
+  }
+
+  .terminal-output > div {
+    grid-template-columns: 1fr;
+    gap: 2px;
+  }
+
+  .terminal-window {
+    margin-top: 64px;
+  }
 }
