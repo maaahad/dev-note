@@ -1,4 +1,7 @@
-export const metadata = {
+import type { Metadata } from "next";
+import Link from "next/link";
+
+export const metadata: Metadata = {
   title: "Projects",
 };
 
@@ -17,24 +20,13 @@ export default function ProjectsPage() {
             <span className="blog-date">01</span>
 
             <div>
-              <h2 className="blog-title">T1 Diaries</h2>
+              <Link href="/projects/t1diaries" className="blog-title">
+                T1 Diaries
+              </Link>
 
               <p className="blog-description">
                 Community-driven Type 1 Diabetes diary platform built with Rust,
                 GraphQL and PostgreSQL.
-              </p>
-            </div>
-          </article>
-
-          <article className="blog-item">
-            <span className="blog-date">02</span>
-
-            <div>
-              <h2 className="blog-title">dev-note</h2>
-
-              <p className="blog-description">
-                Personal engineering notebook for documenting projects,
-                experiments and technical decisions.
               </p>
             </div>
           </article>
