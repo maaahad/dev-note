@@ -718,3 +718,242 @@ button {
     padding-top: 48px;
   }
 }
+
+/* =========================================================
+   Documentation layout
+   ========================================================= */
+
+.docs-layout {
+  width: min(calc(100% - 32px), var(--wrap));
+
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+
+  gap: 64px;
+
+  padding: 64px 0 96px;
+}
+
+/* =========================================================
+   Documentation sidebar
+   ========================================================= */
+
+.docs-sidebar {
+  position: sticky;
+  top: 90px;
+
+  align-self: start;
+
+  padding-right: 24px;
+}
+
+.docs-sidebar-project {
+  padding-bottom: 24px;
+
+  border-bottom: 1px solid var(--line);
+}
+
+.docs-sidebar-project a {
+  display: block;
+}
+
+.docs-sidebar-command {
+  display: block;
+
+  margin-bottom: 4px;
+
+  color: var(--green);
+
+  font-size: 11px;
+}
+
+.docs-sidebar-path {
+  color: var(--fg-hi);
+
+  font-size: 12px;
+
+  word-break: break-word;
+}
+
+.docs-sidebar-heading {
+  margin-top: 28px;
+  margin-bottom: 12px;
+
+  color: var(--mute);
+
+  font-size: 10px;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.12em;
+}
+
+.docs-nav {
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+.docs-nav li {
+  margin: 2px 0;
+}
+
+.docs-nav-link {
+  display: grid;
+
+  grid-template-columns: 24px 1fr 10px;
+
+  align-items: center;
+
+  gap: 6px;
+
+  padding: 7px 8px;
+
+  border-left: 1px solid transparent;
+
+  color: var(--mute);
+
+  font-size: 11px;
+
+  transition:
+    color 120ms ease,
+    background 120ms ease,
+    border-color 120ms ease;
+}
+
+.docs-nav-link:hover {
+  border-left-color: var(--line-hi);
+
+  background: var(--green-dim);
+
+  color: var(--fg-hi);
+}
+
+.docs-nav-link.active {
+  border-left-color: var(--green);
+
+  background: var(--green-dim);
+
+  color: var(--green);
+}
+
+.docs-nav-number {
+  color: var(--mute-2);
+
+  font-size: 9px;
+}
+
+.docs-nav-link.active .docs-nav-number {
+  color: var(--green);
+}
+
+.docs-nav-active {
+  color: var(--green);
+
+  font-size: 8px;
+
+  text-shadow: 0 0 8px var(--green-glow);
+}
+
+/* =========================================================
+   Documentation content
+   ========================================================= */
+
+.docs-content {
+  min-width: 0;
+}
+
+/* =========================================================
+   Documentation header
+   ========================================================= */
+
+.docs-project-header {
+  padding-bottom: 32px;
+
+  margin-bottom: 32px;
+
+  border-bottom: 1px solid var(--line);
+}
+
+.docs-project-header-meta {
+  margin-bottom: 12px;
+
+  color: var(--green);
+
+  font-size: 11px;
+}
+
+.docs-project-header h1 {
+  margin: 0;
+
+  color: var(--fg-max);
+
+  font-size: clamp(2rem, 5vw, 3.5rem);
+
+  font-weight: 500;
+
+  letter-spacing: -0.06em;
+
+  line-height: 1;
+}
+
+.docs-project-header p {
+  max-width: 680px;
+
+  margin: 18px 0 0;
+
+  color: var(--mute);
+
+  font-size: 13px;
+}
+
+/* =========================================================
+   Mobile
+   ========================================================= */
+
+@media (max-width: 800px) {
+  .docs-layout {
+    grid-template-columns: 1fr;
+
+    gap: 32px;
+
+    padding-top: 40px;
+  }
+
+  .docs-sidebar {
+    position: static;
+
+    padding-right: 0;
+  }
+
+  .docs-sidebar-project {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .docs-nav {
+    display: grid;
+
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 2px;
+  }
+
+  .docs-nav-link {
+    height: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .docs-layout {
+    width: min(calc(100% - 24px), var(--wrap));
+  }
+
+  .docs-nav {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,65 @@
+---
+title: "Architecture"
+description: "Overall architecture and design of T1 Diaries."
+---
+
+# Architecture
+
+T1 Diaries is designed as a modular full-stack
+application.
+
+The goal is to keep the boundaries between the
+different parts of the system explicit.
+
+## Technology stack
+
+The initial stack is:
+
+- Rust
+- Axum
+- async-graphql
+- PostgreSQL
+- SQLx
+- Next.js
+- TypeScript
+
+## High-level architecture
+
+The application follows this general flow:
+
+```text
+┌──────────────────────┐
+│      Next.js         │
+│      Frontend        │
+└──────────┬───────────┘
+           │
+           │ GraphQL
+           ▼
+┌──────────────────────┐
+│        Axum          │
+│     HTTP Server      │
+└──────────┬───────────┘
+           │
+           ▼
+┌──────────────────────┐
+│    async-graphql     │
+│     GraphQL API      │
+└──────────┬───────────┘
+           │
+           ▼
+┌──────────────────────┐
+│      Services        │
+│    Business Logic    │
+└──────────┬───────────┘
+           │
+           ▼
+┌──────────────────────┐
+│     Repositories     │
+│        SQLx          │
+└──────────┬───────────┘
+           │
+           ▼
+┌──────────────────────┐
+│     PostgreSQL       │
+└──────────────────────┘
+```
